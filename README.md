@@ -1,11 +1,11 @@
-# TornInterface
+# Torn MedBay
 
 ## Introduction 
 
-TornInterface is a .mjs simple program to optimize some functions in your life
+Torn MedBay (TMB) is a .mjs simple program to optimize some functions in your life
 this is a API in development by just one person
 
-## about TI
+## about TMB
 
 ![dynamic](https://img.shields.io/github/package-json/version/Eloazy/TornInterface?style=plastic) / ![static](https://img.shields.io/badge/progress-developing-green?style=plastic)
 
