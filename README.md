@@ -22,14 +22,15 @@ FL or IL
 Not available yet, wait for future updates
 
 ### IL
-1º dowload the release
-2º open the CMD
-3º go to diretory of the release
-4º create a `.env` with (if you want test before the release [developer tester])
++ dowload the release
++ open the CMD
++ go to diretory of the release
++ create a `.env` with (if you want test before the release [developer tester])
 > API_KEY="torn key"
+\
 > BROWSER=false
-5º `npm i` and `node medBay.mjs`
-6º input the faction id
++ `npm i` and `node medBay.mjs`
++ input the faction id
 
 ## Recomendations
 
