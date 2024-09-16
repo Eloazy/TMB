@@ -15,7 +15,21 @@ this is a API in development by just one person
 
 ## If you want use this API
 
-tutorial will be maked after the first release
+Choose one of the 2 release method
+FL or IL
+
+### FL: 
+Not available yet, wait for future updates
+
+### IL
+1º dowload the release
+2º open the CMD
+3º go to diretory of the release
+4º create a `.env` with (if you want test before the release [developer tester])
+> API_KEY="torn key"
+> BROWSER=false
+5º `npm i` and `node medBay.mjs`
+6º input the faction id
 
 ## Recomendations
 
