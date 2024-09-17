@@ -42,3 +42,14 @@ Not available yet, wait for future updates
 
 > [!WARNING]
 > Never share the *.env* it has confidential information about your user in TORN.
+
+## Developer issues
+
+> [!CAUTION]
+> JSON Storage dont work, need to save data from `manage_key.mjs`
+
+> [!WARNING]
+> `Inquierer/prompts` have some problems, can overwrite
+
+> [!IMPORTANT]
+> Security system for bad inputs not added
