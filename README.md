@@ -7,7 +7,9 @@ this is a API in development by just one person
 
 ## about TMB
 
-![dynamic](https://img.shields.io/github/package-json/version/Eloazy/TornInterface?style=plastic) / ![static](https://img.shields.io/badge/progress-developing-green?style=plastic)
+![dynamic](https://img.shields.io/github/package-json/version/Eloazy/TMB?style=plastic) / ![static](https://img.shields.io/badge/progress-developing-green?style=plastic)
+
+![dynamic](https://img.shields.io/github/package-json/author/Eloazy/TMB?style=plastic)
 
 > [!NOTE]
 > the API is still being made, it is possible that some pushes will have critical errors, use only the RELEASES.
