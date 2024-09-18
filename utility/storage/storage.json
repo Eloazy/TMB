@@ -2,6 +2,8 @@
 	"key":"xxxxxxxxxxxxxxxx",
 	"permissions": {
 		"auto-start":false,
-		"awaysTest":false
+		"awaysTest":false,
+		"displayAll":false,
+		"autoUpdate":true
 	}
 }
