@@ -27,28 +27,29 @@ Not available yet, wait for future updates
 + dowload the release
 + open the CMD
 + go to diretory of the release
-+ create a `.env` with (if you want test before the release [developer tester])
-> API_KEY="torn key"
++ go to config.json and add your key
 \
-> BROWSER=false
-+ `npm i` and `node medBay.mjs`
++ `click in installDeoendencies` and  after this`Medbay - torn`
++ start
 + input the faction id
 
 ## Recomendations
 
 > [!NOTE]
-> the recommendations is for developer version
-
-> [!CAUTION]
 > DONT DOWLOAD THE DEVELOPER, ONLY RELEASES, IT MAY NOT ONLY WORK, BUT MAY NOT BE OPTIMIZED
 
 > [!IMPORTANT]
-> Never share your Key, We will not be responsible for any errors made by the user if they do not follow the instructions given.
-
-> [!WARNING]
-> Never share the *.json* it has confidential information about your user in TORN.
-
-## Developer issues
+> Never share your Key or JSON file.
 
 > [!CAUTION]
 > DONT DELETE JSON, will create a fatal error, if you delete, reinstall
+
+## Developer issues
+
+none found
+
+## future updates
+open automatically the user profile
+configuration system
+
+
