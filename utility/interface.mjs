@@ -1,6 +1,7 @@
 import * as fs from 'fs'
 
 export function interface_creator() {
+	process.title = 'MedBay' // change the title from cmd
 	console.log('\x1Bc') // clean console
 	console.log('\x1b[33m') // change color
 	console.log(fs.readFileSync('./graphics/start.txt', 'utf8')) // load title
