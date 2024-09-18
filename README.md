@@ -36,6 +36,9 @@ Not available yet, wait for future updates
 
 ## Recomendations
 
+> [!NOTE]
+> the recommendations is for developer version
+
 > [!CAUTION]
 > DONT DOWLOAD THE DEVELOPER, ONLY RELEASES, IT MAY NOT ONLY WORK, BUT MAY NOT BE OPTIMIZED
 
@@ -43,15 +46,9 @@ Not available yet, wait for future updates
 > Never share your Key, We will not be responsible for any errors made by the user if they do not follow the instructions given.
 
 > [!WARNING]
-> Never share the *.env* it has confidential information about your user in TORN.
+> Never share the *.json* it has confidential information about your user in TORN.
 
 ## Developer issues
 
 > [!CAUTION]
-> JSON Storage dont work, need to save data from `manage_key.mjs`
-
-> [!WARNING]
-> `Inquierer/prompts` have some problems, can overwrite
-
-> [!IMPORTANT]
-> Security system for bad inputs not added
+> DONT DELETE JSON, will create a fatal error, if you delete, reinstall
