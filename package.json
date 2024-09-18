@@ -1,0 +1,18 @@
+{
+    "name": "MedBay",
+    "version": "1.0.0",
+    "description": "Medic script to localize revivable targets in Factions",
+    "main": "medbay.mjs",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Elish [3028393]",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Eloazy/TMB"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "@inquirer/prompts": "^6.0.1"
+    }
+}
