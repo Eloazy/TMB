@@ -118,24 +118,22 @@ async function optionManage(value) {
 			return 'disableLoop'
 		break;
 		case 1:
-			console.log('test1')
-			return value
+			openBrownser(AllRevivableActiveID)
 		break;
 		case 2:
 			await openBrownser(OnlyInHospitalID)
-			
 		break;
 		default:
 			console.error('\x1b[31m','Error - Menu_selection, invalid input'); reset_color()
 	}
 }
 async function optionPrint() {
-	var updateDescription = 'disable AutoUpdate after any input and back to main page'
-	if(localData.permissions.autoUpdate == false) {updateDescription = 'AutoUpdated Disabled in permissions'}
+	var updateDescriptionForcedMode = 'disabled in permissions'
+	if(localData.permissions.autoUpdate == false) {updateDescriptionForcedMode = 'not optimized, dont use in big factions (Can mine memory by opening multiple tabs in chrome)'}
 	return select({message: 'Useful Options', choices: [
-		{name: 'Force Mode', value: 1, description: 'open all targets, regardless of whether or not they are in the hospital DISABLED'},
+		{name: 'Force Mode', value: 1, description: updateDescriptionForcedMode, disabled: localData.permissions.protectionMode},
 		{name: 'Restricted mode',value: 2, description: 'open Only in hospital targets' },
-		{name: 'back',value: 0, description: updateDescription}
+		{name: 'back',value: 0, description: 'close the medBay spies'}
 	]})
 }
 

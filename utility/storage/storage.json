@@ -1,0 +1,10 @@
+{
+	"key":"xxxxxxxxxxxxxxxx",
+	"permissions": {
+		"auto-start":false,
+		"awaysTest":false,
+		"debbugMode":false,
+		"protectionMode":true,
+		"autoUpdate":true
+	}
+}
