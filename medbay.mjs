@@ -3,7 +3,6 @@ import { readFileSync } from 'fs'
 // own libraries
 import { CallStorage } from './utility/storage.mjs'
 import { interface_creator } from './utility/interface.mjs'
-/*import { config } from './utility/configuration.mjs'*/
 import { ErrorType } from './utility/error.mjs'
 import { start } from './utility/start.mjs'
 

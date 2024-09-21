@@ -4,6 +4,7 @@ import { CallStorage } from './storage.mjs'
 import { interface_creator } from './interface.mjs'
 import { keyBuild } from './key_builder.mjs'
 import { ErrorType } from './error.mjs'
+import { openBrownser } from './explorerManipulation.mjs'
 import * as fs from 'fs'
 
 var localData = null
@@ -40,7 +41,7 @@ function defaultValues() {
 	b = 0;
 }
 export async function start() {
-	defaultValues()
+	await defaultValues()
 	await pullLocal()
 	if(localData.permissions.awaysTest == true) {
 		serverData = await keyBuild(localData.key, 'key', '/info', 'testKey')
@@ -76,8 +77,9 @@ export async function start() {
 			}
 		}
 		loopElapsed++
-		if(localData.displayAll == true){printNames()}
+		if(localData.permissions.debbugMode == true){printNames()}
 		else {
+			console.log(localData.debbugMode)
 			console.log('> Results done')
 			console.log('\x1b[0m')
 			console.log(`> ${AllRevivableActiveID.length} in Force Mode and ${OnlyInHospitalID.length} in hospital : Updates Elapsed: ${loopElapsed}`)
@@ -91,49 +93,49 @@ export async function start() {
 async function pullLocal() {
 	if(await CallStorage(0) == -1) {await ErrorType('E1')}
 	localData = await CallStorage('pull')
-	console.log('localData')
 	return localData = JSON.parse(localData)
 }
 
 function printNames() {
 	console.log('\x1b[0m')
+	console.log('[DEBBUG MODE]')
 	console.log(`> ${AllRevivableActiveID.length} revivable players (ignorig hospital state) and in hospital ${OnlyInHospitalID.length}`)
 	reset_color()
 	console.log(`> printing all`)
 	console.log('\x1b[33m')
-	for(i = 0; i<AllRevivableActiveName.length; i++) {console.log(`> ${AllRevivableActiveName[i]}`)}
+	for(var i = 0; i<AllRevivableActiveName.length; i++) {console.log(`> ${AllRevivableActiveName[i]}`)}
 	reset_color()
 	console.log('> printing only in hospital')
 	console.log('\x1b[33m')
-	for(i = 0; i<OnlyInHospitalName.length; i++) {console.log(`> ${OnlyInHospitalName[i]}`)}
+	for(var i = 0; i<OnlyInHospitalName.length; i++) {console.log(`> ${OnlyInHospitalName[i]}`)}
 	reset_color()
 }
 
 async function optionManage(value) {
-	console.log(value)
 	switch(value) {
 		case 0:
 			return 'disableLoop'
 		break;
 		case 1:
-			console.log('test1')
-			return value
+			openBrownser(AllRevivableActiveID)
 		break;
 		case 2:
-			console.log('test2')
-			return value			
+			await openBrownser(OnlyInHospitalID)
 		break;
 		default:
 			console.error('\x1b[31m','Error - Menu_selection, invalid input'); reset_color()
 	}
 }
 async function optionPrint() {
-	var updateDescription = 'disable AutoUpdate after any input and back to main page'
-	if(localData.permissions.autoUpdate == false) {updateDescription = 'AutoUpdated Disabled in permissions'}
+	var updateDescriptionForcedMode = 'disabled in permissions'
+	var HospitalInisponibility = null
+	if(localData.permissions.autoUpdate == false) {updateDescriptionForcedMode = 'not optimized, dont use in big factions (Can mine memory by opening multiple tabs in chrome)'}
+	if(OnlyInHospitalID.length == 0) {HospitalInisponibility = true}
+	else {HospitalInisponibility = false}
 	return select({message: 'Useful Options', choices: [
-		{name: 'Force Mode', value: 1, description: 'open all targets, regardless of whether or not they are in the hospital'},
-		{name: 'Restricted mode',value: 2, description: 'open Only in hospital targets' },
-		{name: 'disable update',value: 0, description: updateDescription}
+		{name: 'Force Mode', value: 1, description: updateDescriptionForcedMode, disabled: localData.permissions.protectionMode},
+		{name: 'Restricted mode',value: 2, description: 'open Only in hospital targets', disabled: HospitalInisponibility },
+		{name: 'back',value: 0, description: 'close the medBay spies'}
 	]})
 }
 

@@ -2,8 +2,6 @@
 import * as fs from 'fs'
 // callStorage recive all calls in program and manage to key, permission and test
 
-//TestStorageCall()
-
 export async function CallStorage(method) {
 	if(method == 0) {
 		if(await TestStorageCall() == false) {return -1} // return error JSON not found
