@@ -1,10 +1,11 @@
 {
-	"key":"xxxxxxxxxxxxxxxx",
+	"key":"[InputYourKeyHere]",
 	"permissions": {
 		"auto-start":false,
 		"awaysTest":false,
 		"debbugMode":false,
 		"protectionMode":true,
+		"limiterForProtection": 10,
 		"autoUpdate":true
 	}
 }

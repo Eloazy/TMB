@@ -1,4 +1,5 @@
 import * as fs from 'fs'
+import { CallStorage } from './storage.mjs'
 
 export function interface_creator() {
 	process.title = 'MedBay' // change the title from cmd

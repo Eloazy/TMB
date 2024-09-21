@@ -93,7 +93,6 @@ export async function start() {
 async function pullLocal() {
 	if(await CallStorage(0) == -1) {await ErrorType('E1')}
 	localData = await CallStorage('pull')
-	console.log('localData')
 	return localData = JSON.parse(localData)
 }
 
@@ -129,10 +128,13 @@ async function optionManage(value) {
 }
 async function optionPrint() {
 	var updateDescriptionForcedMode = 'disabled in permissions'
+	var HospitalInisponibility = null
 	if(localData.permissions.autoUpdate == false) {updateDescriptionForcedMode = 'not optimized, dont use in big factions (Can mine memory by opening multiple tabs in chrome)'}
+	if(OnlyInHospitalID.length == 0) {HospitalInisponibility = true}
+	else {HospitalInisponibility = false}
 	return select({message: 'Useful Options', choices: [
 		{name: 'Force Mode', value: 1, description: updateDescriptionForcedMode, disabled: localData.permissions.protectionMode},
-		{name: 'Restricted mode',value: 2, description: 'open Only in hospital targets' },
+		{name: 'Restricted mode',value: 2, description: 'open Only in hospital targets', disabled: HospitalInisponibility },
 		{name: 'back',value: 0, description: 'close the medBay spies'}
 	]})
 }
