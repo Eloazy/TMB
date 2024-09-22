@@ -76,7 +76,7 @@ export async function start() {
 			console.log(`> The faction: ${serverData.name} have: ${Object.keys(serverData.members).length} members`)
 			reset_color()
 			for(var i = 0; i<members.length; i++) {
-				Temporarymember = await keyBuild('LUW4axvQphYgrXbR', 'user', members[i], 'profile')
+				Temporarymember = await keyBuild(localData.key, 'user', members[i], 'profile')
 				if(Temporarymember.revivable == 1) {
 					AllRevivableActiveID[a] = Temporarymember.player_id
 					AllRevivableActiveName[a] = Temporarymember.name
