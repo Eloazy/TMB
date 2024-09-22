@@ -23,6 +23,8 @@ var loopElapsed = 0;
 var a = 0;
 var b = 0;
 
+var invalid = false
+
 function defaultValues() {
 	localData = null
 	serverData = null
@@ -49,44 +51,55 @@ export async function start() {
 			console.log('> key tested')
 			console.log('> starting')
 		}
+		await keyBuild(localData.key, 'key', '/info', 'testKey') // ERROR HERE : need a verify process
 	}
 	while(loop == true) {
 		if(loopElapsed == 0) {
 			interface_creator()	
+			if(invalid == true) {
+				console.log('\x1b[31m')
+				console.log('> invalid ID')
+				reset_color()
+				invalid = false
+			}
 			answer = await input({message: 'input the faction ID: '})
 		}
 		else {interface_creator()}
 		loop = localData.permissions.autoUpdate // get the default permission from JSON
 		serverData = await keyBuild(localData.key, 'faction', answer, 'getFactionUsers')
-		members = await Object.keys(serverData.members)
-		console.log('\x1b[33m')
-		console.log('> loading')
-		console.log(`> The faction: ${serverData.name} have: ${Object.keys(serverData.members).length} members`)
-		reset_color()
-		for(var i = 0; i<members.length; i++) {
-			Temporarymember = await keyBuild('LUW4axvQphYgrXbR', 'user', members[i], 'profile')
-			if(Temporarymember.revivable == 1) {
-				AllRevivableActiveID[a] = Temporarymember.player_id
-				AllRevivableActiveName[a] = Temporarymember.name
-				a++
-				if(Temporarymember.revivable == 1 && Temporarymember.status.color == 'red') {
-					OnlyInHospitalID[b] = Temporarymember.player_id
-					OnlyInHospitalName[b] = Temporarymember.name
-					b++
+		try {members = await Object.keys(serverData.members)} catch {invalid = true}
+		if(invalid == false) {
+			interface_creator()
+			console.log('\x1b[33m')
+			console.log('> loading id: ','\x1b[36m', JSON.stringify(serverData.ID))
+			console.log('\x1b[33m')
+			console.log(`> The faction: ${serverData.name} have: ${Object.keys(serverData.members).length} members`)
+			reset_color()
+			for(var i = 0; i<members.length; i++) {
+				Temporarymember = await keyBuild(localData.key, 'user', members[i], 'profile')
+				if(Temporarymember.revivable == 1) {
+					AllRevivableActiveID[a] = Temporarymember.player_id
+					AllRevivableActiveName[a] = Temporarymember.name
+					a++
+					if(Temporarymember.revivable == 1 && Temporarymember.status.color == 'red') {
+						OnlyInHospitalID[b] = Temporarymember.player_id
+						OnlyInHospitalName[b] = Temporarymember.name
+						b++
+					}
 				}
 			}
+			loopElapsed++
+			if(localData.permissions.debbugMode == true){printNames()}
+			else {
+				console.log(localData.debbugMode)
+				console.log('> Results done')
+				console.log('\x1b[0m')
+				console.log(`> ${AllRevivableActiveID.length} in Force Mode and ${OnlyInHospitalID.length} in hospital : Updates Elapsed: ${loopElapsed}`)
+				reset_color()
+			}
+			a = 0; b= 0;
+			if(await optionManage(await optionPrint()) == 'disableLoop') {loop = false}	
 		}
-		loopElapsed++
-		if(localData.permissions.debbugMode == true){printNames()}
-		else {
-			console.log(localData.debbugMode)
-			console.log('> Results done')
-			console.log('\x1b[0m')
-			console.log(`> ${AllRevivableActiveID.length} in Force Mode and ${OnlyInHospitalID.length} in hospital : Updates Elapsed: ${loopElapsed}`)
-			reset_color()
-		}
-		a = 0; b= 0;
-		if(await optionManage(await optionPrint()) == 'disableLoop') {loop = false}
 	}
 }
 

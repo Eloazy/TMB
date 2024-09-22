@@ -9,7 +9,7 @@ this is a API in development by just one person
 
 ![dynamic](https://img.shields.io/github/package-json/version/Eloazy/TMB?style=plastic) / ![static](https://img.shields.io/badge/progress-developing-green?style=plastic)
 
-![dynamic](https://img.shields.io/github/package-json/author/Eloazy/TMB?style=plastic)
+![dynamic](https://img.shields.io/github/package-json/author/Eloazy/TMB?style=plastic) / [![dynamic](https://img.shields.io/badge/Change%20Logs-F03D24)](https://github.com/Eloazy/TMB/blob/main/Update_Logs.md)
 
 > [!NOTE]
 > the API is still being made, it is possible that some pushes will have critical errors, use only the RELEASES.
