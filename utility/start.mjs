@@ -70,23 +70,6 @@ export async function start() {
 		else {interface_creator()}
 		loop = localData.permissions.autoUpdate // get the default permission from JSON
 		serverData = await keyBuild(localData.key, 'faction', answer, 'getFactionUsers')
-<<<<<<< HEAD
-		members = await Object.keys(serverData.members)
-		console.log('\x1b[33m')
-		console.log('> loading')
-		console.log(`> The faction: ${serverData.name} have: ${Object.keys(serverData.members).length} members`)
-		reset_color()
-		for(var i = 0; i<members.length; i++) {
-			Temporarymember = await keyBuild(localData.key, 'user', members[i], 'profile')
-			if(Temporarymember.revivable == 1) {
-				AllRevivableActiveID[a] = Temporarymember.player_id
-				AllRevivableActiveName[a] = Temporarymember.name
-				a++
-				if(Temporarymember.revivable == 1 && Temporarymember.status.color == 'red') {
-					OnlyInHospitalID[b] = Temporarymember.player_id
-					OnlyInHospitalName[b] = Temporarymember.name
-					b++
-=======
 		try {members = await Object.keys(serverData.members)} catch {invalid = true}
 		if(invalid == false) {
 			interface_creator()
@@ -106,22 +89,8 @@ export async function start() {
 						OnlyInHospitalName[b] = Temporarymember.name
 						b++
 					}
->>>>>>> d59741d731e340fb8975b7d295979181be601b25
 				}
 			}
-			loopElapsed++
-			if(localData.permissions.debbugMode == true){printNames()}
-			else {
-				console.log(localData.debbugMode)
-				console.log('> Results done')
-				console.log('\x1b[0m')
-				console.log(`> ${AllRevivableActiveID.length} in Force Mode and ${OnlyInHospitalID.length} in hospital : Updates Elapsed: ${loopElapsed}`)
-				reset_color()
-			}
-			a = 0; b= 0;
-			if(await optionManage(await optionPrint()) == 'disableLoop') {loop = false}	
-		}
-<<<<<<< HEAD
 		loopElapsed++
 		if(localData.permissions.printNames == true){printNames()}
 		else {
@@ -132,8 +101,6 @@ export async function start() {
 		}
 		a = 0; b= 0;
 		if(await optionManage(await optionPrint()) == 'disableLoop') {loop = false}
-=======
->>>>>>> d59741d731e340fb8975b7d295979181be601b25
 	}
 }
 
