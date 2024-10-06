@@ -91,16 +91,17 @@ export async function start() {
 					}
 				}
 			}
-		loopElapsed++
-		if(localData.permissions.printNames == true){printNames()}
-		else {
-			console.log('> Results done')
-			console.log('\x1b[0m')
-			console.log(`> ${AllRevivableActiveID.length} in Force Mode and ${OnlyInHospitalID.length} in hospital : Updates Elapsed: ${loopElapsed}`)
-			reset_color()
+			loopElapsed++
+			if(localData.permissions.printNames == true){printNames()}
+			else {
+				console.log('> Results done')
+				console.log('\x1b[0m')
+				console.log(`> ${AllRevivableActiveID.length} in Force Mode and ${OnlyInHospitalID.length} in hospital : Updates Elapsed: ${loopElapsed}`)
+				reset_color()
+			}
+			a = 0; b= 0;
+			if(await optionManage(await optionPrint()) == 'disableLoop') {loop = false}
 		}
-		a = 0; b= 0;
-		if(await optionManage(await optionPrint()) == 'disableLoop') {loop = false}
 	}
 }
 
