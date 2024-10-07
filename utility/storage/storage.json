@@ -3,9 +3,8 @@
 	"permissions": {
 		"auto-start":false,
 		"awaysTest":false,
-		"debbugMode":false,
+		"printNames":true,
 		"protectionMode":true,
-		"limiterForProtection": 10,
 		"autoUpdate":true
 	}
 }

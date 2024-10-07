@@ -5,6 +5,7 @@ import { interface_creator } from './interface.mjs'
 import { keyBuild } from './key_builder.mjs'
 import { ErrorType } from './error.mjs'
 import { openBrownser } from './explorerManipulation.mjs'
+import { testDevMode } from '../sys/devMode/devmode.mjs'
 import * as fs from 'fs'
 
 var localData = null
@@ -13,8 +14,8 @@ var members = []
 var Temporarymember = null
 var answer = null
 
-var AllRevivableActiveID = ['ID']
-var AllRevivableActiveName = ['Name']
+var AllRevivableActiveID = []
+var AllRevivableActiveName = []
 var OnlyInHospitalID = []
 var OnlyInHospitalName = []
 
@@ -32,8 +33,8 @@ function defaultValues() {
 	Temporarymember = null
 	answer = null
 
-	AllRevivableActiveID = ['ID']
-	AllRevivableActiveName = ['Name']
+	AllRevivableActiveID = []
+	AllRevivableActiveName = []
 	OnlyInHospitalID = []
 	OnlyInHospitalName = []
 
@@ -45,6 +46,8 @@ function defaultValues() {
 export async function start() {
 	await defaultValues()
 	await pullLocal()
+	if(testDevMode() !== false) {localData.key = testDevMode()}
+
 	if(localData.permissions.awaysTest == true) {
 		serverData = await keyBuild(localData.key, 'key', '/info', 'testKey')
 		if(serverData.access_level >= 1) {
@@ -89,16 +92,15 @@ export async function start() {
 				}
 			}
 			loopElapsed++
-			if(localData.permissions.debbugMode == true){printNames()}
+			if(localData.permissions.printNames == true){printNames()}
 			else {
-				console.log(localData.debbugMode)
 				console.log('> Results done')
 				console.log('\x1b[0m')
 				console.log(`> ${AllRevivableActiveID.length} in Force Mode and ${OnlyInHospitalID.length} in hospital : Updates Elapsed: ${loopElapsed}`)
 				reset_color()
 			}
 			a = 0; b= 0;
-			if(await optionManage(await optionPrint()) == 'disableLoop') {loop = false}	
+			if(await optionManage(await optionPrint()) == 'disableLoop') {loop = false}
 		}
 	}
 }
@@ -111,7 +113,6 @@ async function pullLocal() {
 
 function printNames() {
 	console.log('\x1b[0m')
-	console.log('[DEBBUG MODE]')
 	console.log(`> ${AllRevivableActiveID.length} revivable players (ignorig hospital state) and in hospital ${OnlyInHospitalID.length}`)
 	reset_color()
 	console.log(`> printing all`)

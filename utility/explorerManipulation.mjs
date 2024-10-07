@@ -18,7 +18,6 @@ export async function openBrownser(IDs) {
 	}
 	else {
 		for(var i = 0; i<IDs.length; i++) {
-			console.log('uwu')
 			targetURL = targetURL.concat(IDs[i])
 			console.log(targetURL)
 			await open(targetURL)
