@@ -117,7 +117,7 @@ function printNames() {
 	reset_color()
 	console.log(`> printing all`)
 	console.log('\x1b[33m')
-	for(var i = 0; i<AllRevivableActiveName.length; i++) {console.log(`> ${AllRevivableActiveName[i]}`)}
+	for(var i = 0; i<AllRevivableActiveName.length; i++) {console.log(`> [${AllRevivableActiveID[i]}] | ${AllRevivableActiveName[i]}`)}
 	reset_color()
 	console.log('> printing only in hospital')
 	console.log('\x1b[33m')
